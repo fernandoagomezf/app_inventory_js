@@ -1,0 +1,252 @@
+/* CSS Variables */
+:root {
+    --primary-navy: #1a2332;
+    --secondary-navy: #2c3e50;
+    --neutral-bg: #e8e8e8;
+    --neutral-light: #f5f5f5;
+    --neutral-dark: #666666;
+    --border-color: #cccccc;
+}
+
+/* Base Styles */
+body {
+    background-color: var(--neutral-bg);
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navigation */
+.navbar {
+    background-color: var(--primary-navy) !important;
+    border-radius: 0 !important;
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+    color: #ffffff !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #cccccc !important;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-navy);
+    border: 1px solid var(--primary-navy);
+    border-radius: 0;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-navy);
+    border-color: var(--secondary-navy);
+}
+
+.btn-secondary {
+    background-color: var(--neutral-dark);
+    border: 1px solid var(--neutral-dark);
+    border-radius: 0;
+}
+
+.btn-secondary:hover {
+    background-color: #555555;
+    border-color: #555555;
+}
+
+.btn-success {
+    background-color: #2d5016;
+    border: 1px solid #2d5016;
+    border-radius: 0;
+}
+
+.btn-success:hover {
+    background-color: #3d6020;
+    border-color: #3d6020;
+}
+
+.btn-danger {
+    background-color: #8b0000;
+    border: 1px solid #8b0000;
+    border-radius: 0;
+}
+
+.btn-danger:hover {
+    background-color: #a00000;
+    border-color: #a00000;
+}
+
+/* Cards */
+.card {
+    border-radius: 0;
+    border: 1px solid var(--border-color);
+    background-color: #ffffff;
+}
+
+.card-header {
+    background-color: var(--primary-navy);
+    color: #ffffff;
+    border-radius: 0;
+    padding: 20px;
+}
+
+/* Tables */
+.table {
+    background-color: #ffffff;
+    border-radius: 0;
+}
+
+.table thead {
+    background-color: var(--primary-navy);
+    color: #ffffff;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: var(--neutral-light);
+}
+
+/* Forms */
+.form-control, .form-select, textarea {
+    border-radius: 0;
+    border: 1px solid var(--border-color);
+}
+
+.form-control:focus, .form-select:focus, textarea:focus {
+    border-color: var(--primary-navy);
+    box-shadow: 0 0 0 0.2rem rgba(26, 35, 50, 0.25);
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--neutral-dark);
+}
+
+/* Layout Containers */
+.container-main {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* Section Headers */
+.section-header {
+    background-color: var(--neutral-light);
+    padding: 12px 15px;
+    border-left: 4px solid var(--primary-navy);
+    margin-bottom: 20px;
+}
+
+/* Login Page Specific Styles */
+.login-container {
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+}
+
+body.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login-container .card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-container .btn-primary {
+    width: 100%;
+}
+
+.brand-text {
+    color: var(--neutral-dark);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Detail Page Specific Styles */
+.detail-label {
+    font-weight: 600;
+    color: var(--neutral-dark);
+    margin-bottom: 5px;
+}
+
+.detail-value {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+.section-divider {
+    border-top: 2px solid var(--neutral-light);
+    margin: 25px 0;
+}
+
+.product-image {
+    width: 100%;
+    height: 300px;
+    background-color: var(--neutral-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+}
+
+/* Edit Page Specific Styles */
+.image-upload-area {
+    width: 100%;
+    height: 250px;
+    background-color: var(--neutral-light);
+    border: 2px dashed var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.image-upload-area:hover {
+    border-color: var(--primary-navy);
+    background-color: #e0e0e0;
+}
+
+/* Update Page Specific Styles */
+.product-info-card {
+    background-color: var(--neutral-light);
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.quantity-display {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--primary-navy);
+}
+
+.quantity-label {
+    font-size: 0.9rem;
+    color: var(--neutral-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.quantity-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.quantity-input {
+    width: 150px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.adjustment-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

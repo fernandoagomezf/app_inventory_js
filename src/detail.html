@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Warehouse Inventory</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Warehouse Inventory</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inventory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="update.html">Update Stock</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="settings.html">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container container-main">
+        <div class="mb-3">
+            <a href="index.html" class="btn btn-secondary">← Back to Inventory</a>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="card-title mb-0">Product Details</h2>
+                    <div>
+                        <a href="edit.html" class="btn btn-primary">Edit Product</a>
+                        <button class="btn btn-secondary">Delete</button>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="product-image">
+                            <span class="text-muted">Product Image</span>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="detail-label">Product ID</div>
+                                <div class="detail-value">PRD-001</div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="detail-label">Status</div>
+                                <div class="detail-value">
+                                    <span class="badge bg-success">In Stock</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="detail-label">Product Name</div>
+                                <div class="detail-value">Industrial Drill</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="detail-label">Category</div>
+                                <div class="detail-value">Power Tools</div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="detail-label">Manufacturer</div>
+                                <div class="detail-value">DeWalt Industrial</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="detail-label">Unit Price</div>
+                                <div class="detail-value">$249.99</div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="detail-label">Current Quantity</div>
+                                <div class="detail-value">45 units</div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="detail-label">Total Value</div>
+                                <div class="detail-value">$11,249.55</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-divider"></div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="detail-label">Description</div>
+                        <div class="detail-value">
+                            Heavy-duty industrial drill with variable speed control and ergonomic design. 
+                            Features a powerful 850W motor, keyless chuck, and LED work light. Suitable for 
+                            professional construction and manufacturing applications. Includes carrying case 
+                            and standard drill bit set.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="detail-label">SKU</div>
+                        <div class="detail-value">DW-ID850-2024</div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="detail-label">Weight</div>
+                        <div class="detail-value">3.2 kg</div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="detail-label">Warehouse Location</div>
+                        <div class="detail-value">Aisle 5, Shelf B3</div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="detail-label">Reorder Level</div>
+                        <div class="detail-value">10 units</div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="detail-label">Date Added</div>
+                        <div class="detail-value">2024-08-15</div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="detail-label">Last Updated</div>
+                        <div class="detail-value">2024-11-10</div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="detail-label">Supplier</div>
+                        <div class="detail-value">Industrial Supply Co.</div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="detail-label">Warranty Period</div>
+                        <div class="detail-value">24 months</div>
+                    </div>
+                </div>
+                
+                <div class="section-divider"></div>
+                
+                <h5 class="mb-3">Recent Stock Movements</h5>
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Quantity</th>
+                                <th>Balance After</th>
+                                <th>User</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2024-11-10</td>
+                                <td><span class="badge bg-success">In</span></td>
+                                <td>+15</td>
+                                <td>45</td>
+                                <td>admin</td>
+                                <td>Stock replenishment</td>
+                            </tr>
+                            <tr>
+                                <td>2024-11-05</td>
+                                <td><span class="badge bg-danger">Out</span></td>
+                                <td>-8</td>
+                                <td>30</td>
+                                <td>jsmith</td>
+                                <td>Order #12345</td>
+                            </tr>
+                            <tr>
+                                <td>2024-10-28</td>
+                                <td><span class="badge bg-danger">Out</span></td>
+                                <td>-12</td>
+                                <td>38</td>
+                                <td>mjones</td>
+                                <td>Order #12320</td>
+                            </tr>
+                            <tr>
+                                <td>2024-10-15</td>
+                                <td><span class="badge bg-success">In</span></td>
+                                <td>+50</td>
+                                <td>50</td>
+                                <td>admin</td>
+                                <td>New stock delivery</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

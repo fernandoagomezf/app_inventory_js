@@ -15,7 +15,7 @@ class Settings {
 }
 
 function loadView() {
-    const settings = new Settings();   
+    console.log("View Loaded");
 }
 
 window.addEventListener('load', loadView);
