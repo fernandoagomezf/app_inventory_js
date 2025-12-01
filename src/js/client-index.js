@@ -1,7 +1,7 @@
 
 let inventory = new InventoryManager();
 
-function onLoad() {
+function load() {
     const table = document.querySelector("#product-table tbody");
     table.innerHTML = "";
 
@@ -37,4 +37,4 @@ function onLoad() {
     }
 }
 
-window.addEventListener("load", onLoad);
+window.addEventListener("load", load);
