@@ -69,7 +69,7 @@ class ProductRepository {
     }
 
     save(product) {
-        if (product === null || typeof product !== 'Product') {
+        if (product === null || typeof product !== "object") {
             throw new Error("Invalid product type.");
         }
         const key = this.#getKey(product.sku);
@@ -103,7 +103,7 @@ class StockRepository {
     }
 
     find(sku) {
-        if (sku === null || typeof sku !== 'string') {
+        if (sku === null || typeof sku !== "string") {
             throw new Error("Invalid sku type.");
         }
         const key = this.#getKey(sku);
@@ -131,7 +131,7 @@ class StockRepository {
     }
 
     save(stock) {
-        if (stock === null || typeof stock !== 'Stock') {
+        if (stock === null || typeof stock !== "object") {
             throw new Error("Invalid stock type.");
         }
         const key = this.#getKey(stock.sku);
@@ -165,7 +165,7 @@ class TransactionRepository {
     }
 
     find(id) {
-        if (id === null || typeof id !== 'string') {
+        if (id === null || typeof id !== "string") {
             throw new Error("Invalid transaction ID type.");
         }
         const key = this.#getKey(id);
@@ -188,7 +188,7 @@ class TransactionRepository {
     }
 
     save(transaction) {
-        if (transaction === null || typeof transaction !== 'Transaction') {
+        if (transaction === null || typeof transaction !== 'object') {
             throw new Error("Invalid transaction type.");
         }
         const key = this.#getKey(transaction.id);
