@@ -12,12 +12,17 @@ class ProductRepository {
 
     #toData(product) {
         const json = {
+            id: product.id,
             sku: product.sku,
             name: product.name, 
             category: product.category,
             manufacturer: product.manufacturer,
             description: product.description,
             price: product.price,
+            location: product.location, 
+            supplier: product.supplier,
+            weight: product.weight, 
+            volume: product.volume,
         };
         return JSON.stringify(json);
     }

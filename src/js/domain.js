@@ -1,17 +1,27 @@
 
 class Product {
+    #_id = "";
     #_sku = "";
     #_name = "";
     #_category = "";
     #_manufacturer = "";
     #_description = "";
     #_price = 0.0;
+    #_location = "";
+    #_supplier = "";
+    #_weight = 0.0;
+    #_volume = 0.0;
 
     constructor(sku) {
         if (sku === undefined || sku === null || sku.length === 0) {
             throw new Error("SKU cannot be empty.");
         }  
         this.#_sku = sku;        
+        this.#_id = crypto.randomUUID();
+    }
+
+    get id() {
+        return this.#_id;
     }
 
     get sku() {
@@ -61,6 +71,45 @@ class Product {
         this.#_price = value ?? 0.0;
     }
 
+    get location() {
+        return this.#_location;
+    }
+
+    set location(value) {
+        this.#_location = value ?? "";
+    }
+
+    get supplier() {
+        return this.#_supplier;
+    }
+
+    set supplier(value) {
+        this.#_supplier = value ?? "";
+    }
+
+    get weight() {
+        return this.#_weight;
+    }
+
+    set weight(value) {
+        if (value < 0.0) {
+            throw new Error("Weight cannot be negative.");
+        }
+        this.#_weight = value;
+    }
+
+    get volume() {
+        return this.#_volume;
+    }
+
+    set volume(value) {
+        if (value < 0.0) {
+            throw new Error("Volume cannot be negative.");
+        }
+        this.#_volume = value;
+    }
+
+
     matches(search) {
         if (search === null) {
             return true;
@@ -74,11 +123,16 @@ class Product {
 
     static of(obj) {
         const product = new Product(obj.sku);
+        product.#_id = obj.id;
         product.name = obj.name;
         product.category = obj.category;
         product.manufacturer = obj.manufacturer;
         product.description = obj.description;
         product.price = obj.price;
+        product.location = obj.location;
+        product.supplier = obj.supplier;
+        product.weight = obj.weight;
+        product.volume = obj.volume;
         return product;
     }
 }
