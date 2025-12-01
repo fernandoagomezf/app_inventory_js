@@ -32,7 +32,7 @@ function onLoad() {
         
         const cell = row.insertCell();
         cell.appendChild(viewLink);
-        cell.appendChild(document.createTextNode(' ')); // Add space between
+        cell.appendChild(document.createTextNode(' '));
         cell.appendChild(editLink);
     }
 }
