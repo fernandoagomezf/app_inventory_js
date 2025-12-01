@@ -1,7 +1,7 @@
 
-let inventory = new InventoryManager();
-
 function load() {
+    const inventory = new InventoryManager();
+
     const table = document.querySelector("#product-table tbody");
     table.innerHTML = "";
 
