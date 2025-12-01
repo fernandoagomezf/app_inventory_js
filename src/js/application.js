@@ -18,7 +18,7 @@ class InventoryManager {
 
     constructor() {
         this.#_productRepository = new ProductRepository();
-        this.#_stockRepository = new ProductRepository();
+        this.#_stockRepository = new StockRepository();
         this.#_transactionRepository = new TransactionRepository();
     }
 

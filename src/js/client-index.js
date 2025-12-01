@@ -6,7 +6,8 @@ function onLoad() {
     table.innerHTML = "";
 
     const vms = inventory.getProducts(null);
-    for (const vm in vms) {
+    for (const idx in vms) {
+        const vm = vms[idx];
         const row = table.insertRow();
         row.insertCell().textContent = vm.sku;
         row.insertCell().textContent = vm.name;

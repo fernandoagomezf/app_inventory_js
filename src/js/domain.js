@@ -6,23 +6,12 @@ class Product {
     #_manufacturer = "";
     #_description = "";
     #_price = 0.0;
-    #_modified = Date();
 
     constructor(sku) {
-        if (sku === undefined) {
-            throw new Error("The 'sku' is required to create a product.");
-        }
-        this.#_sku = sku;        
-    }
-
-    #updated() {
-        this.#_modified = Date();
-    }
-
-    enforce() {
-        if (this.#_sku === undefined || this.#_sku === null || this.#_sku.length === 0) {
+        if (sku === undefined || sku === null || sku.length === 0) {
             throw new Error("SKU cannot be empty.");
-        }        
+        }  
+        this.#_sku = sku;        
     }
 
     get sku() {
@@ -35,7 +24,6 @@ class Product {
 
     set name(value) {
         this.#_name = value ?? "";
-        this.#updated();
     }
     
     get category() {
@@ -44,7 +32,6 @@ class Product {
 
     set category(value) {        
         this.#_category = value ?? "";
-        this.#updated();
     }
 
     get manufacturer() {
@@ -53,7 +40,6 @@ class Product {
 
     set manufacturer(value) {
         this.#_manufacturer = value ?? "";
-        this.#updated();
     }
 
     get description() {
@@ -62,7 +48,6 @@ class Product {
 
     set description(value) {
         this.#_description = value ?? "";
-        this.#updated();
     }
 
     get price() {
@@ -74,11 +59,6 @@ class Product {
             throw new Error("Price must be a non-negative number.");
         }
         this.#_price = value ?? 0.0;
-        this.#updated();
-    }
-
-    get modified() {
-        return this.#_modified;
     }
 
     matches(search) {
@@ -91,6 +71,16 @@ class Product {
             || this.sku.toLowerCase().includes(searchText)
             || this.category.toLowerCase().includes(searchText);
     }
+
+    static of(obj) {
+        const product = new Product(obj.sku);
+        product.name = obj.name;
+        product.category = obj.category;
+        product.manufacturer = obj.manufacturer;
+        product.description = obj.description;
+        product.price = obj.price;
+        return product;
+    }
 }
 
 class Stock {
@@ -98,7 +88,7 @@ class Stock {
     #_quantity = 0;
 
     constructor(sku) {
-        if (sku === null || !(sku instanceof String) || sku.length === 0) {
+        if (sku === null || typeof sku !== 'string' || sku.length === 0) {
             throw new Error("Invalid SKU.");
         }
         this.#_sku = sku;
@@ -129,6 +119,12 @@ class Stock {
 
     lowStock() {
         return this.#_quantity > 0 && this.#_quantity < 5;
+    }
+
+    static of(obj) {
+        const stock = new Stock(obj.sku);
+        stock.quantity = obj.quantity;
+        return stock;
     }
 }
 
@@ -182,6 +178,19 @@ class Transaction {
 
     get total() {
         return this.#_total;
+    }
+
+    static of(obj) {
+        const transaction = new Transaction(
+            obj.sku, 
+            obj.quantity, 
+            obj.price, 
+            obj.total >= 0.0 ? 1 : -1
+        );
+        transaction.#_date = obj.date;
+        transaction.#_id = obj.id;
+
+        return transaction;
     }
 }
 

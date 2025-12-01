@@ -1,14 +1,33 @@
 
 class ProductRepository {
     #getKey(sku) {
-        return `Product_{sku}`;
+        return `Product_${sku}`;
+    }
+
+    #fromData(data) {
+        const json = JSON.parse(data);
+        const product = Product.of(json);
+        return product;
+    }
+
+    #toData(product) {
+        const json = {
+            sku: product.sku,
+            name: product.name, 
+            category: product.category,
+            manufacturer: product.manufacturer,
+            description: product.description,
+            price: product.price,
+        };
+        return JSON.stringify(json);
     }
 
     *all(search) {
         for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
             if (key.startsWith("Product_")) {
-                const product = this.get(key);
+                const data = localStorage.getItem(key);                
+                const product = this.#fromData(data);
                 if (product.matches(search)) {
                     yield product;
                 }
@@ -17,7 +36,7 @@ class ProductRepository {
     }
 
     find(sku) {
-        if (sku === null || !(sku instanceof String)) {
+        if (sku === null || typeof sku !== "string") {
             throw new Error("Invalid sku type.");
         }
         const key = this.#getKey(sku);
@@ -25,7 +44,7 @@ class ProductRepository {
         
         let product = null;
         if (data !== null) {
-            product = JSON.parse(data);
+            product = this.#fromData(data);
         }
         
         return product;
@@ -34,7 +53,7 @@ class ProductRepository {
     get(sku) {
         const product = this.find(sku);
         if (product === null) {
-            throw new Error(`Product with sku {sku} not found.`);
+            throw new Error(`Product with sku ${sku} not found.`);
         }
         return product;
     }
@@ -45,11 +64,11 @@ class ProductRepository {
     }
 
     save(product) {
-        if (product === null || !(product instanceof Product)) {
+        if (product === null || typeof product !== 'Product') {
             throw new Error("Invalid product type.");
         }
         const key = this.#getKey(product.sku);
-        const data = JSON.stringify(product);
+        const data = this.#toData(product);
         localStorage.setItem(key, data);
     }
 
@@ -61,11 +80,25 @@ class ProductRepository {
 
 class StockRepository {
     #getKey(sku) {
-        return `Stock_{sku}`;
+        return `Stock_${sku}`;
+    }
+
+    #fromData(data) {
+        const json = JSON.parse(data);
+        const stock = Stock.of(json);
+        return stock;
+    }
+
+    #toData(stock) {
+        const json = {
+            sku: stock.sku,
+            quantity: stock.quantity
+        };
+        return JSON.stringify(json);
     }
 
     find(sku) {
-        if (sku === null || !(sku instanceof String)) {
+        if (sku === null || typeof sku !== 'string') {
             throw new Error("Invalid sku type.");
         }
         const key = this.#getKey(sku);
@@ -73,7 +106,7 @@ class StockRepository {
         
         let stock = null;
         if (data !== null) {
-            stock = JSON.parse(data);
+            stock = this.#fromData(data);
         }
         
         return stock;
@@ -82,7 +115,7 @@ class StockRepository {
     get(sku) {
         const stock = this.find(sku);
         if (stock === null) {
-            throw new Error(`Stock with sku {sku} not found.`);
+            throw new Error(`Stock with sku ${sku} not found.`);
         }
         return stock;
     }
@@ -93,11 +126,11 @@ class StockRepository {
     }
 
     save(stock) {
-        if (stock === null || !(stock instanceof Stock)) {
+        if (stock === null || typeof stock !== 'Stock') {
             throw new Error("Invalid stock type.");
         }
         const key = this.#getKey(stock.sku);
-        const data = JSON.stringify(stock);
+        const data = this.#toData(stock);
         localStorage.setItem(key, data);
     }
 
@@ -109,11 +142,25 @@ class StockRepository {
 
 class TransactionRepository {
     #getKey(id) {
-        return `Transaction_{id}`;
+        return `Transaction_${id}`;
+    }
+
+    #fromData(data) {
+        const json = JSON.parse(data);
+        const transaction = Transaction.of(json);        
+        return transaction;
+    }
+
+    #toData(transaction) {
+        const json = {
+            sku: transaction.sku,
+            quantity: transaction.quantity
+        };
+        return JSON.stringify(json);
     }
 
     find(id) {
-        if (id === null || !(sku instanceof String)) {
+        if (id === null || typeof id !== 'string') {
             throw new Error("Invalid transaction ID type.");
         }
         const key = this.#getKey(id);
@@ -121,26 +168,26 @@ class TransactionRepository {
         
         let transaction = null;
         if (data !== null) {
-            transaction = JSON.parse(data);
+            transaction = this.#fromData(data);
         }
         
         return transaction;
     }
 
     get(id) {
-        const product = this.find(id);
-        if (product === null) {
-            throw new Error(`Transaction with ID {id} not found.`);
+        const transaction = this.find(id);
+        if (transaction === null) {
+            throw new Error(`Transaction with ID ${id} not found.`);
         }
-        return product;
+        return transaction;
     }
 
     save(transaction) {
-        if (transaction === null || !(transaction instanceof Transaction)) {
+        if (transaction === null || typeof transaction !== 'Transaction') {
             throw new Error("Invalid transaction type.");
         }
         const key = this.#getKey(transaction.id);
-        const data = JSON.stringify(transaction);
+        const data = this.#toData(transaction);
         localStorage.setItem(key, data);
     }
 
