@@ -5,8 +5,11 @@ function load() {
     const table = document.querySelector("#product-table tbody");
     table.innerHTML = "";
 
+    let count = 0;
     const vms = inventory.getProducts(null);
     for (const idx in vms) {
+        count++;
+
         const vm = vms[idx];
         const row = table.insertRow();
         row.insertCell().textContent = vm.sku;
@@ -35,6 +38,8 @@ function load() {
         cell.appendChild(document.createTextNode(' '));
         cell.appendChild(editLink);
     }
+
+    document.getElementById("count-text").innerHTML = count.toString();
 }
 
 window.addEventListener("load", load);
