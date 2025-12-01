@@ -4,8 +4,11 @@ class Inventory {
     name = "";
     category  = "";
     quantity = 0;
-    price = 0.0;
-    status = "";    
+    price = "";
+    status = {
+        text: "",
+        badge: ""
+    };
 }
 
 class InventoryManager {
@@ -17,6 +20,35 @@ class InventoryManager {
         this.#_productRepository = new ProductRepository();
         this.#_stockRepository = new ProductRepository();
         this.#_transactionRepository = new TransactionRepository();
+    }
+
+    getProducts(search){
+        let result = [];
+        for (const product of this.#_productRepository.all(search)) {
+            const stock = this.#_stockRepository.get(product.sku);
+
+            const vm = new Inventory();
+            vm.sku = product.sku;
+            vm.name = product.name;
+            vm.category = product.category;
+            vm.quantity = stock.quantity;
+            vm.price = product.price.toLocaleString("es-MX", {
+                style: "currency",
+                currency: "MXN"
+            });
+            vm.status.text = stock.outOfStock() ? "Out of Stock" :
+                             stock.lowStock() ? "Low Stock" :
+                             stock.inStock() ? "In Stock" : 
+                             "";
+            vm.status.badge = stock.outOfStock() ? "bg-danger" :
+                              stock.lowStock() ? "bg-warning text-dark" :
+                              stock.inStock() ? "bg-success" : 
+                              "";
+
+            result.push(vm);
+        }
+
+        return result;
     }
 
     registerProduct(sku, name) {

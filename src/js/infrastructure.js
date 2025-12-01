@@ -4,6 +4,18 @@ class ProductRepository {
         return `Product_{sku}`;
     }
 
+    *all(search) {
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (key.startsWith("Product_")) {
+                const product = this.get(key);
+                if (product.matches(search)) {
+                    yield product;
+                }
+            }
+        }
+    }
+
     find(sku) {
         if (sku === null || !(sku instanceof String)) {
             throw new Error("Invalid sku type.");
@@ -116,9 +128,9 @@ class TransactionRepository {
     }
 
     get(id) {
-        const product = this.find(sku);
+        const product = this.find(id);
         if (product === null) {
-            throw new Error(`Product with sku {sku} not found.`);
+            throw new Error(`Transaction with ID {id} not found.`);
         }
         return product;
     }

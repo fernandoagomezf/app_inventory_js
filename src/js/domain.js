@@ -80,6 +80,17 @@ class Product {
     get modified() {
         return this.#_modified;
     }
+
+    matches(search) {
+        if (search === null) {
+            return true;
+        }
+
+        const searchText = search.toLowerCase();
+        return this.name.toLowerCase().includes(searchText) 
+            || this.sku.toLowerCase().includes(searchText)
+            || this.category.toLowerCase().includes(searchText);
+    }
 }
 
 class Stock {
@@ -114,6 +125,10 @@ class Stock {
 
     outOfStock() {
         return this.#_quantity === 0;
+    }
+
+    lowStock() {
+        return this.#_quantity > 0 && this.#_quantity < 5;
     }
 }
 
