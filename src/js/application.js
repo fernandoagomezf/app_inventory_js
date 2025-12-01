@@ -1,4 +1,36 @@
 
+class ViewState {
+    #_state = null;
+
+    get state() {
+        if (this.#_state === null) {
+            this.load();
+        }
+        return this.#_state;
+    }
+
+    load() {
+        const data = localStorage.getItem("App_ViewState");
+        if (data === null) {
+            this.#_state = {
+
+            };
+        } else {
+            this.#_state = JSON.parse(data);
+        }
+    }
+
+    save() {
+        const data = JSON.stringify(this.#_state);
+        localStorage.setItem("App_ViewState", data);
+    }
+
+    reset() {
+        localStorage.removeItem("App_ViewState");
+        this.#_state = null;
+    }
+}
+
 class Inventory {
     sku = "";
     name = "";
@@ -98,5 +130,4 @@ class InventoryManager {
         this.#moveStock(sku, quantity, Transaction.NEG);     
     }
 }
-
 
