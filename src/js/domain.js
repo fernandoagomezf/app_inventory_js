@@ -189,26 +189,31 @@ class Transaction {
     #_quantity = 0;
     #_total = 0.0;
     #_date = Date();
+    #_type = 0;
+    #_reason = "";
+    #_notes = "";
 
-    constructor(sku, quantity, price, factor) {
+    constructor(sku, quantity, price, type) {
         if (isNaN(quantity) || quantity === 0) {
             throw new Error("Quantity must be a non-zero number.");
         }
         if (isNaN(price) || price >= 0) {
             throw new Error("Price must not be be a negative number.");
         }
-        if (factor !== Transaction.POS && factor !== Transaction.NEG) {
-            throw new Error("Factor can only be either 1 or -1.")
+        if (type !== Transaction.TYPE_INCREASE && type !== Transaction.TYPE_DECREASE) {
+            throw new Error("Invalid transaction type.")
         }
         this.#_id = crypto.randomUUID();
         this.#_sku = sku;
         this.#_quantity = quantity;
-        this.#_price = price;        
-        this.#_total = factor * quantity * price;
+        this.#_price = price;
+        this.#_type = type;
+        this.#_total = type * quantity * price;
+
     }
 
-    static POS = 1;
-    static NEG = -1;
+    static TYPE_INCREASE = 1;
+    static TYPE_DECREASE = -1;
 
     get id() {
         return this.#_id;
@@ -230,8 +235,28 @@ class Transaction {
         return this.#_price;
     }
 
+    get type() {
+        return this.#_type;
+    }
+
     get total() {
         return this.#_total;
+    }
+
+    get reason() {
+        return this.#_reason;
+    }
+
+    set reason(value) {
+        this.#_reason = value ?? "";
+    }
+
+    get notes() {
+        return this.#_notes;
+    }
+
+    set notes(value) {
+        return this.#_notes = value ?? "";
     }
 
     static of(obj) {
@@ -239,10 +264,12 @@ class Transaction {
             obj.sku, 
             obj.quantity, 
             obj.price, 
-            obj.total >= 0.0 ? 1 : -1
+            obj.type,
         );
-        transaction.#_date = obj.date;
         transaction.#_id = obj.id;
+        transaction.#_date = obj.date;
+        transaction.#_reason = obj.reason;
+        transaction.#_notes = obj.notes;
 
         return transaction;
     }

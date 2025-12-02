@@ -158,8 +158,14 @@ class TransactionRepository {
 
     #toData(transaction) {
         const json = {
+            id: transaction.id, 
             sku: transaction.sku,
-            quantity: transaction.quantity
+            quantity: transaction.quantity,
+            price: transaction.price, 
+            type: transaction.type, 
+            total: transaction.total, 
+            reason: transaction.reason, 
+            notes: transaction.notes,
         };
         return JSON.stringify(json);
     }

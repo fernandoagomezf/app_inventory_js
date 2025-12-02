@@ -223,11 +223,11 @@ class InventoryManager {
     }
 
     increaseStock(sku, quantity) {
-        this.#moveStock(sku, quantity, Transaction.POS);
+        this.#moveStock(sku, quantity, Transaction.TYPE_INCREASE);
     }
 
     decreaseStock(sku, quantity) {
-        this.#moveStock(sku, quantity, Transaction.NEG);     
+        this.#moveStock(sku, quantity, Transaction.TYPE_DECREASE);
     }
 }
 
