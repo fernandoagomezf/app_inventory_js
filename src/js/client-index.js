@@ -1,5 +1,5 @@
 
-function populateList(searchText) {
+function populate(searchText) {
     const inventory = new InventoryManager();
 
     const table = document.querySelector("#product-table tbody");
@@ -59,14 +59,14 @@ function populateList(searchText) {
 }
 
 function load() {
-    populateList(null);    
+    populate(null);    
     document.getElementById("search-text")
             .addEventListener("input", search);
 }
 
 function search() {
     const text = document.getElementById("search-text");
-    populateList(text.value);
+    populate(text.value);
 }
 
 window.addEventListener("load", load);
