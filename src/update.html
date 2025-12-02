@@ -73,19 +73,19 @@
                         <form>
                             <div class="mb-4">
                                 <label for="adjustmentType" class="form-label">Adjustment Type</label>
-                                <select class="form-select" id="adjustmentType">
-                                    <option value="increase" selected>Increase Stock (Receiving)</option>
-                                    <option value="decrease">Decrease Stock (Shipment/Sale)</option>
-                                    <option value="set">Set Exact Quantity (Correction)</option>
+                                <select class="form-select" id="adjustement-type-list">
+                                    <option value="increase" selected>Receiving Stock</option>
+                                    <option value="decrease">Shipment/Sale</option>
+                                    <option value="set">Correction</option>
                                 </select>
                             </div>
                             
                             <div class="mb-4">
                                 <label class="form-label">Quantity Adjustment</label>
                                 <div class="quantity-controls">
-                                    <button type="button" class="btn btn-danger adjustment-btn">-</button>
-                                    <input type="number" class="form-control quantity-input" id="adjustmentQuantity" value="0" min="0">
-                                    <button type="button" class="btn btn-success adjustment-btn">+</button>
+                                    <button id="remove-button" type="button" class="btn btn-danger adjustment-btn">-</button>
+                                    <input type="number" class="form-control quantity-input" id="quantity-text" value="0" min="0">
+                                    <button id="add-button" type="button" class="btn btn-success adjustment-btn">+</button>
                                 </div>
                                 <div class="text-center text-muted">
                                     <small>Use buttons or type the quantity directly</small>
@@ -93,8 +93,8 @@
                             </div>
                             
                             <div class="mb-4">
-                                <label for="reason" class="form-label">Reason for Adjustment</label>
-                                <select class="form-select mb-2" id="reason">
+                                <label for="reason" class="form-label">Reason</label>
+                                <select class="form-select mb-2" id="reason-list">
                                     <option value="">-- Select reason --</option>
                                     <option value="purchase">New Purchase/Delivery</option>
                                     <option value="sale">Sale/Order Fulfillment</option>
@@ -108,26 +108,9 @@
                             
                             <div class="mb-4">
                                 <label for="notes" class="form-label">Notes (Optional)</label>
-                                <textarea class="form-control" id="notes" rows="3" placeholder="Add any additional notes about this adjustment..."></textarea>
+                                <textarea class="form-control" id="notes-text" rows="3" placeholder="Add any additional notes about this adjustment..."></textarea>
                             </div>
-                            
-                            <div class="product-info-card">
-                                <div class="row text-center">
-                                    <div class="col-4">
-                                        <div class="quantity-label">Current</div>
-                                        <div class="quantity-display" style="font-size: 1.8rem;">45</div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="quantity-label">Change</div>
-                                        <div class="quantity-display" style="font-size: 1.8rem; color: #2d5016;">+0</div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="quantity-label">New Total</div>
-                                        <div class="quantity-display" style="font-size: 1.8rem;">45</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
+                                                        
                             <div class="d-flex gap-2 justify-content-end mt-4">
                                 <button id="confirm-button" type="button" class="btn btn-primary">Confirm</button>
                             </div>

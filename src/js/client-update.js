@@ -37,7 +37,30 @@ function resetProductPanel() {
 }
 
 function resetAdjustementPanel() {
+    document.getElementById("adjustement-type-list").selectedIndex = 0;
+    document.getElementById("quantity-text").textContent = 0;
+}
 
+function addQuantity() {
+    const text = document.getElementById("quantity-text");
+    let quantity = parseInt(text.value);
+    if (isNaN(quantity)) {
+        quantity = 0;
+    } else {
+        quantity++;
+    }
+    text.value = quantity;
+}
+
+function removeQuantity() {
+    const text = document.getElementById("quantity-text");
+    let quantity = parseInt(text.value);
+    if (isNaN(quantity) || quantity <= 0) {
+        quantity = 0;
+    } else {
+        quantity--;
+    }
+    text.value = quantity;
 }
 
 function selectProduct() {
@@ -78,6 +101,10 @@ function load() {
             .addEventListener("change", selectProduct);
     document.getElementById("cancel-button")
             .addEventListener("click", cancel);
+    document.getElementById("add-button")
+            .addEventListener("click", addQuantity);
+    document.getElementById("remove-button")
+            .addEventListener("click", removeQuantity);
 }
 
 window.addEventListener("load", load);
