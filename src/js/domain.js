@@ -188,7 +188,7 @@ class Transaction {
     #_price = 0.0;
     #_quantity = 0;
     #_total = 0.0;
-    #_date = Date();
+    #_date = "";
     #_type = 0;
     #_reason = "";
     #_notes = "";
@@ -209,7 +209,8 @@ class Transaction {
         this.#_price = price;
         this.#_type = type;
         this.#_total = type * quantity * price;
-
+        const date = new Date();
+        this.#_date = `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')} ${String(date.getHours()).padStart(2,'0')}:${String(date.getMinutes()).padStart(2,'0')}`;
     }
 
     static TYPE_INCREASE = 1;

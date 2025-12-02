@@ -1,8 +1,10 @@
+
 function load() {
     const vs = new ViewState();
 
-    var inventory = new InventoryManager();
-    const product = inventory.loadProduct(vs.state.selectedSku);
+    const manager = new InventoryManager();
+    const product = manager.loadProduct(vs.state.selectedSku);
+    const transactions = manager.getStockTransactions(vs.state.selectedSku);
 
     document.getElementById("product-sku-label").textContent = product.sku;
     document.getElementById("product-name-label").textContent = product.name;
@@ -20,9 +22,33 @@ function load() {
     document.getElementById("volume-label").textContent = product.volume;
     document.getElementById("supplier-label").textContent = product.supplier;
 
-    document.getElementById("edit-button")
-        .addEventListener("click", edit);
+    const table = document.querySelector("#transaction-table tbody");
+    let html = "";
+    for (const idx in transactions) {
+        const transaction = transactions[idx];
+        const type = transaction.type > 0 ? 
+            "<span class='badge bg-success'>In</span>" :
+            "<span class='badge bg-danger'>Out</span>";
+        const total = transaction.total
+            .toLocaleString("es-MX", {
+            style: "currency",
+            currency: "MXN"
+        });
+        const notes = transaction.notes.length > 0 ? transaction.notes : "-";
+        html += "<tr>";
+        html += `<td>${transaction.date}</td>`;
+        html += `<td>${type}</td>`;
+        html += `<td>${transaction.quantity}</td>`;
+        html += `<td>${total}</td>`;
+        html += `<td>${transaction.reason.toUpperCase()}</td>`;
+        html += `<td>${notes}</td>`;
+        html += "</tr>";
+    }
+    table.innerHTML = html;
     
+
+    document.getElementById("edit-button")
+        .addEventListener("click", edit);    
     document.getElementById("delete-button")
         .addEventListener("click", showDeleteModal);    
     document.getElementById("confirm-delete-button")

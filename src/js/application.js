@@ -150,6 +150,19 @@ class InventoryManager {
         return vm;
     }
 
+    getStockTransactions(sku) {
+        if (sku === null || sku.length <= 0) {
+            throw new Error("Invalid SKU");
+        }
+
+        let results = []
+        for (let transaction of this.#_transactionRepository.all(sku)) {
+            results.push(transaction);
+        }
+
+        return results;
+    }
+
     registerProduct(sku, name) {
         if (sku === null || sku.length <= 0) {
             throw new Error("Invalid product SKU.");
