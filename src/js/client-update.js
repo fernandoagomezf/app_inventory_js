@@ -22,19 +22,22 @@ function populate(searchText) {
 }
 
 function search() {
-    const panel = document.getElementById("stock-panel");
-    panel.style.display = "none";
-    resetPanel();
+    resetProductPanel();
     const text = document.getElementById("search-text");
     populate(text.value);
 }
 
-function resetPanel() {
+function resetProductPanel() {
+    document.getElementById("stock-panel").style.display = "none";
     document.getElementById("product-name-label").textContent = "-";
     document.getElementById("category-label").innerHTML = `<strong>Category: </strong> -`;
     document.getElementById("price-label").innerHTML = `<strong>Price: </strong> -`;
     document.getElementById("location-label").innerHTML = `<strong>Location: </strong> -`;
     document.getElementById("stock-label").textContent = "-";
+}
+
+function resetAdjustementPanel() {
+
 }
 
 function selectProduct() {
@@ -45,9 +48,8 @@ function selectProduct() {
     vs.state.selectedSku = sku;
     vs.save();
 
-    if (sku.length <= 0) {
-        panel.style.display = "none";
-        resetPanel();
+    if (sku.length <= 0) {        
+        resetProductPanel();
         return;
     } 
 
