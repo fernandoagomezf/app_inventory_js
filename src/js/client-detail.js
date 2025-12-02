@@ -22,6 +22,11 @@ function load() {
 
     document.getElementById("edit-button")
         .addEventListener("click", edit);
+    
+    document.getElementById("delete-button")
+        .addEventListener("click", showDeleteModal);    
+    document.getElementById("confirm-delete-button")
+        .addEventListener("click", confirmDelete);
 }
 
 function edit(e) {
@@ -32,5 +37,24 @@ function edit(e) {
     window.location.href = "edit.html"
 }
 
+function showDeleteModal(e) {
+    e.preventDefault();
+    const modal = new bootstrap.Modal(document.getElementById('confirm-delete-modal'));
+    modal.show();
+}
+
+function confirmDelete(e) {
+    e.preventDefault();
+    const modal = bootstrap.Modal.getInstance(document.getElementById('confirm-delete-modal'));
+    modal.hide();
+    deleteProduct();
+}
+
+function deleteProduct() {
+    const vs = new ViewState();
+    const inventory = new InventoryManager();
+    inventory.deleteProduct(vs.state.selectedSku);
+    window.location.href = "index.html";
+}
 
 window.addEventListener("load", load);

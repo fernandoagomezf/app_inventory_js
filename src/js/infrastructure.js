@@ -164,6 +164,19 @@ class TransactionRepository {
         return JSON.stringify(json);
     }
 
+    *all(sku) {
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (key.startsWith("Transaction_")) {
+                const data = localStorage.getItem(key);                
+                const transaction = this.#fromData(data);
+                if (transaction.sku == sku) {
+                    yield transaction;
+                }
+            }
+        }
+    }
+
     find(id) {
         if (id === null || typeof id !== "string") {
             throw new Error("Invalid transaction ID type.");
@@ -199,5 +212,11 @@ class TransactionRepository {
     delete(id) {
         const key = this.#getKey(id);
         localStorage.removeItem(key);
+    }
+
+    deleteFor(sku) {
+        for (let transaction of this.all(sku)) {
+            this.delete(transaction.id);
+        }
     }
 }

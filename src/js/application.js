@@ -182,6 +182,15 @@ class InventoryManager {
         this.#_productRepository.save(product);
     }
 
+    deleteProduct(sku) {
+        if (sku === null || sku.length <= 0) {
+            throw new Error("Invalid product SKU.");
+        }
+        this.#_productRepository.delete(sku);
+        this.#_stockRepository.delete(sku);
+        this.#_transactionRepository.delete(sku);
+    }
+
     #moveStock(sku, quantity, movement) {
         const product = this.#_productRepository.get(sku);
         const stock = this.#_stockRepository.get(sku);
