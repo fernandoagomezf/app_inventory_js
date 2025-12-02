@@ -19,6 +19,17 @@ function load() {
     document.getElementById("weight-label").textContent = product.weight;
     document.getElementById("volume-label").textContent = product.volume;
     document.getElementById("supplier-label").textContent = product.supplier;
+
+    document.getElementById("edit-button")
+        .addEventListener("click", edit);
+}
+
+function edit(e) {
+    e.preventDefault();
+    const vs = new ViewState();
+    vs.state.caller = "detail.html";
+    vs.save();
+    window.location.href = "edit.html"
 }
 
 
