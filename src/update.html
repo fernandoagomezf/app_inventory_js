@@ -37,21 +37,13 @@
                         
                         <div class="mb-3">
                             <label for="searchProduct" class="form-label">Search Product</label>
-                            <input type="text" class="form-control" id="searchProduct" placeholder="Search by name or ID...">
+                            <input type="text" class="form-control" id="search-text" placeholder="Search by name or SKU...">
                         </div>
                         
                         <div class="mb-3">
                             <label for="productSelect" class="form-label">Product</label>
-                            <select class="form-select" id="productSelect">
-                                <option value="">-- Select a product --</option>
-                                <option value="PRD-001" selected>PRD-001 - Industrial Drill</option>
-                                <option value="PRD-002">PRD-002 - Safety Goggles</option>
-                                <option value="PRD-003">PRD-003 - Steel Shelving Unit</option>
-                                <option value="PRD-004">PRD-004 - Forklift Battery</option>
-                                <option value="PRD-005">PRD-005 - Packing Tape Roll</option>
-                                <option value="PRD-006">PRD-006 - Hydraulic Pallet Jack</option>
-                                <option value="PRD-007">PRD-007 - Barcode Scanner</option>
-                                <option value="PRD-008">PRD-008 - Cardboard Boxes (Large)</option>
+                            <select class="form-select" id="product-list">
+                                <option value="" selected>-- Select a product --</option>
                             </select>
                         </div>
                         
@@ -70,7 +62,7 @@
             </div>
             
             <!-- Stock Adjustment -->
-            <div class="col-md-7">
+            <div id="stock-panel" class="col-md-7" style="display:none;">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title mb-4">Adjust Stock Quantity</h4>
@@ -140,53 +132,12 @@
                         </form>
                     </div>
                 </div>
-                
-                <!-- Recent Adjustments -->
-                <div class="card mt-4">
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">Recent Adjustments Today</h5>
-                        <div class="table-responsive">
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr>
-                                        <th>Time</th>
-                                        <th>Product</th>
-                                        <th>Change</th>
-                                        <th>User</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>14:23</td>
-                                        <td>Safety Goggles</td>
-                                        <td><span class="text-success">+50</span></td>
-                                        <td>admin</td>
-                                    </tr>
-                                    <tr>
-                                        <td>13:15</td>
-                                        <td>Packing Tape Roll</td>
-                                        <td><span class="text-danger">-100</span></td>
-                                        <td>jsmith</td>
-                                    </tr>
-                                    <tr>
-                                        <td>11:45</td>
-                                        <td>Barcode Scanner</td>
-                                        <td><span class="text-success">+5</span></td>
-                                        <td>admin</td>
-                                    </tr>
-                                    <tr>
-                                        <td>09:30</td>
-                                        <td>Industrial Drill</td>
-                                        <td><span class="text-danger">-3</span></td>
-                                        <td>mjones</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="js/domain.js"></script>
+    <script type="text/javascript" src="js/infrastructure.js"></script>
+    <script type="text/javascript" src="js/application.js"></script>
+    <script type="text/javascript" src="js/client-update.js"></script>
 </body>
 </html>
