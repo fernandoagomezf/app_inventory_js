@@ -6,13 +6,13 @@ An application for managing warehouse inventory with a clean, professional inter
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 
-## 🚀 Live Demo
+## Live Demo
 
 Visit the live application: [https://fernandoagomezf.github.io/app_inventory_js/](https://fernandoagomezf.github.io/app_inventory_js/)
 
 It's also a Progressive Web App so you can install it from there.
 
-## ✨ Features
+## Features
 
 ### Core Functionality
 - **Product Management** - Add, edit, view, and delete products
@@ -36,7 +36,7 @@ It's also a Progressive Web App so you can install it from there.
 
 ## Architecture
 
-The application follows a layered architecture pattern:
+The application follows a layered clean architecture pattern:
 
 ```
 ├── Domain Layer (domain.js)
