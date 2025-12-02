@@ -226,7 +226,7 @@ class InventoryManager {
         }
         const transaction = new Transaction(
             sku, 
-            stock.quantity, 
+            quantity, 
             parseFloat(product.price), 
             type
         );

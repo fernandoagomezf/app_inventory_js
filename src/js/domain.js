@@ -208,7 +208,7 @@ class Transaction {
         this.#_quantity = quantity;
         this.#_price = price;
         this.#_type = type;
-        this.#_total = type * quantity * price;
+        this.#_total = quantity * price;
         const date = new Date();
         this.#_date = `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')} ${String(date.getHours()).padStart(2,'0')}:${String(date.getMinutes()).padStart(2,'0')}`;
     }
