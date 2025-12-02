@@ -93,6 +93,10 @@ function cancel() {
     window.location.href = "index.html";
 }
 
+function confirm() {
+
+}
+
 function load() {
     populate(null);
     document.getElementById("search-text")
@@ -105,6 +109,8 @@ function load() {
             .addEventListener("click", addQuantity);
     document.getElementById("remove-button")
             .addEventListener("click", removeQuantity);
+    document.getElementById("confirm-button")
+            .addEventListener("click", confirm);
 }
 
 window.addEventListener("load", load);
