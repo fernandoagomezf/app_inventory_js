@@ -48,62 +48,35 @@
                     </div>
                 </div>
                 
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="product-image">
-                            <span class="text-muted">Product Image</span>
-                        </div>
-                    </div>
+                <div class="row">                    
                     
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="detail-label">Product ID</div>
-                                <div class="detail-value">PRD-001</div>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <div class="detail-label">Status</div>
-                                <div class="detail-value">
-                                    <span class="badge bg-success">In Stock</span>
-                                </div>
+                                <div class="detail-label">SKU</div>
+                                <div id="product-sku-label" class="detail-value"></div>
                             </div>
                         </div>
                         
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="detail-label">Product Name</div>
-                                <div class="detail-value">Industrial Drill</div>
+                                <div id="product-name-label" class="detail-value"></div>
                             </div>
                         </div>
                         
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="detail-label">Category</div>
-                                <div class="detail-value">Power Tools</div>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <div class="detail-label">Manufacturer</div>
-                                <div class="detail-value">DeWalt Industrial</div>
+                                <div id="category-label" class="detail-value"></div>
                             </div>
                         </div>
                         
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="detail-label">Unit Price</div>
-                                <div class="detail-value">$249.99</div>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <div class="detail-label">Current Quantity</div>
-                                <div class="detail-value">45 units</div>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <div class="detail-label">Total Value</div>
-                                <div class="detail-value">$11,249.55</div>
-                            </div>
+                                <div id="price-label" class="detail-value"></div>
+                            </div>                            
                         </div>
                     </div>
                 </div>
@@ -113,58 +86,42 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="detail-label">Description</div>
-                        <div class="detail-value">
-                            Heavy-duty industrial drill with variable speed control and ergonomic design. 
-                            Features a powerful 850W motor, keyless chuck, and LED work light. Suitable for 
-                            professional construction and manufacturing applications. Includes carrying case 
-                            and standard drill bit set.
+                        <div id="description-label" class="detail-value">
                         </div>
                     </div>
                 </div>
                 
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="detail-label">SKU</div>
-                        <div class="detail-value">DW-ID850-2024</div>
+                <div class="row">                    
+                    <div class="col-md-2">
+                        <div class="detail-label">Weight (kg)</div>
+                        <div id="weight-label" class="detail-value">
+
+                        </div>
                     </div>
-                    
-                    <div class="col-md-3">
-                        <div class="detail-label">Weight</div>
-                        <div class="detail-value">3.2 kg</div>
+                    <div class="col-md-2">
+                        <div class="detail-label">Volume (cm<sup>3</sup>)</div>
+                        <div id="volume-label" class="detail-value">
+
+                        </div>
                     </div>
-                    
-                    <div class="col-md-3">
-                        <div class="detail-label">Warehouse Location</div>
-                        <div class="detail-value">Aisle 5, Shelf B3</div>
-                    </div>
-                    
-                    <div class="col-md-3">
-                        <div class="detail-label">Reorder Level</div>
-                        <div class="detail-value">10 units</div>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="detail-label">Date Added</div>
-                        <div class="detail-value">2024-08-15</div>
-                    </div>
-                    
-                    <div class="col-md-3">
-                        <div class="detail-label">Last Updated</div>
-                        <div class="detail-value">2024-11-10</div>
-                    </div>
-                    
+                    <div class="col-md-2">
+                        <div class="detail-label">Location</div>
+                        <div id="location-label" class="detail-value">
+                            
+                        </div>
+                    </div>                    
                     <div class="col-md-3">
                         <div class="detail-label">Supplier</div>
                         <div class="detail-value">Industrial Supply Co.</div>
                     </div>
-                    
                     <div class="col-md-3">
-                        <div class="detail-label">Warranty Period</div>
-                        <div class="detail-value">24 months</div>
+                        <div class="detail-label">Manufacturer</div>
+                        <div id="manufacturer-label" class="detail-value">
+
+                        </div>
                     </div>
                 </div>
+                
                 
                 <div class="section-divider"></div>
                 
@@ -220,5 +177,9 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="js/domain.js"></script>
+    <script type="text/javascript" src="js/infrastructure.js"></script>
+    <script type="text/javascript" src="js/application.js"></script>
+    <script type="text/javascript" src="js/client-detail.js"></script>
 </body>
 </html>
