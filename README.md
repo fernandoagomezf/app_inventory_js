@@ -12,6 +12,10 @@ Visit the live application: [https://fernandoagomezf.github.io/app_inventory_js/
 
 It's also a Progressive Web App so you can install it from there.
 
+![Application Screenshot](docs/screenshot.png)
+
+
+
 ## Features
 
 ### Core Functionality
