@@ -162,6 +162,17 @@ class InventoryManager {
         return product;
     }
 
+    loadProduct(sku) {
+        if (sku === null || sku.length <= 0) {
+            throw new Error("Invalid product SKU.");
+        }
+        
+        if (!this.#_productRepository.contains(sku)) {
+            throw new Error(`The SKU ${sku} has not been registered yet.`);
+        } 
+        return this.#_productRepository.get(sku);
+    }
+
     updateProduct(product) {
         if (product === null) {
             throw new Error("Invalid product to save.");

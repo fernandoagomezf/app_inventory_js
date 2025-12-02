@@ -32,6 +32,13 @@ function load() {
         editLink.href = 'edit.html';
         editLink.className = 'btn btn-sm btn-primary';
         editLink.textContent = 'Edit';
+        editLink.onclick = (e) => {
+            e.preventDefault();
+            const vs = new ViewState();
+            vs.state.selectedSku = vm.sku;
+            vs.save();
+            window.location.href = "edit.html"
+        };
         
         const cell = row.insertCell();
         cell.appendChild(viewLink);

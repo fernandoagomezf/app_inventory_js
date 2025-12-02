@@ -40,149 +40,101 @@
         
         <div class="card">
             <div class="card-body">
-                <h2 class="card-title mb-4">Edit Product</h2>
-                
+                <h2 class="card-title mb-4">Edit Product</h2>                
                 <form>
-                    <!-- Basic Information Section -->
+                    <div id="error-panel" class="row mb-3 bg-danger text-white" style="display:none;">
+                        <div id="error-content" class="col-md-12 p-2">
+                            
+                        </div>
+                    </div>
                     <div class="section-header">
                         <h5 class="mb-0">Basic Information</h5>
                     </div>
                     
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="productId" class="form-label">Product ID</label>
-                            <input type="text" class="form-control" id="productId" name="productId" value="PRD-001" readonly>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="sku" class="form-label">SKU</label>
-                            <input type="text" class="form-control" id="sku" name="sku" value="DW-ID850-2024" required>
+                            <label for="product-sku-text" class="form-label">SKU <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="product-sku-text" name="product-sku-text" value="" readonly>
                         </div>
                     </div>
                     
                     <div class="mb-3">
-                        <label for="productName" class="form-label">Product Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="productName" name="productName" value="Industrial Drill" required>
+                        <label for="product-name-text" class="form-label">Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="product-name-text" name="product-name-text" value="" required>
                     </div>
                     
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="category" class="form-label">Category <span class="text-danger">*</span></label>
-                            <select class="form-select" id="category" name="category" required>
-                                <option value="">Select Category</option>
-                                <option value="power-tools" selected>Power Tools</option>
-                                <option value="safety-equipment">Safety Equipment</option>
-                                <option value="storage">Storage</option>
-                                <option value="equipment-parts">Equipment Parts</option>
-                                <option value="packaging">Packaging</option>
-                                <option value="material-handling">Material Handling</option>
-                                <option value="technology">Technology</option>
+                            <label for="category-list" class="form-label">Category <span class="text-danger">*</span></label>
+                            <select class="form-select" id="category-list" name="category-list" required>
+                                <option value="" selected>[Select Category]</option>
+                                <option value="Power Tools">Power Tools</option>
+                                <option value="Safety Equipment">Safety Equipment</option>
+                                <option value="Storage">Storage</option>
+                                <option value="Equipment Parts">Equipment Parts</option>
+                                <option value="Packaging">Packaging</option>
+                                <option value="Material Handling">Material Handling</option>
+                                <option value="Technology">Technology</option>
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label for="manufacturer" class="form-label">Manufacturer</label>
-                            <input type="text" class="form-control" id="manufacturer" name="manufacturer" value="DeWalt Industrial">
+                            <label for="manufacturer-text" class="form-label">Manufacturer</label>
+                            <input type="text" class="form-control" id="manufacturer-text" name="manufacturer-text" value="">
                         </div>
-                    </div>
-                    
+                    </div>                    
                     <div class="mb-3">
-                        <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" id="description" name="description" rows="4">Heavy-duty industrial drill with variable speed control and ergonomic design. Features a powerful 850W motor, keyless chuck, and LED work light. Suitable for professional construction and manufacturing applications. Includes carrying case and standard drill bit set.</textarea>
+                        <label for="description-text" class="form-label">Description</label>
+                        <textarea class="form-control" id="description-text" name="description-text" rows="4"></textarea>
                     </div>
                     
-                    <!-- Pricing and Inventory Section -->
                     <div class="section-header">
-                        <h5 class="mb-0">Pricing and Inventory</h5>
-                    </div>
-                    
+                        <h5 class="mb-0">Inventory</h5>
+                    </div>                    
                     <div class="row mb-3">
                         <div class="col-md-4">
-                            <label for="unitPrice" class="form-label">Unit Price <span class="text-danger">*</span></label>
+                            <label for="price-text" class="form-label">Unit Price <span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <span class="input-group-text" style="border-radius: 0;">$</span>
-                                <input type="number" class="form-control" id="unitPrice" name="unitPrice" value="249.99" step="0.01" required>
+                                <input type="number" class="form-control" id="price-text" name="price-text" value="0.00" step="0.10" required>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <label for="quantity" class="form-label">Current Quantity <span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" id="quantity" name="quantity" value="45" required>
+                            <label for="supplier-text" class="form-label">Supplier</label>
+                            <input type="text" class="form-control" id="supplier-text" name="supplier-text" value="">
                         </div>
                         <div class="col-md-4">
-                            <label for="reorderLevel" class="form-label">Reorder Level</label>
-                            <input type="number" class="form-control" id="reorderLevel" name="reorderLevel" value="10">
+                            <label for="location-text" class="form-label">Warehouse Location</label>
+                            <input type="text" class="form-control" id="location-text" name="location-text" value="">
                         </div>
                     </div>
                     
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="supplier" class="form-label">Supplier</label>
-                            <input type="text" class="form-control" id="supplier" name="supplier" value="Industrial Supply Co.">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="warrantyPeriod" class="form-label">Warranty Period (months)</label>
-                            <input type="number" class="form-control" id="warrantyPeriod" name="warrantyPeriod" value="24">
-                        </div>
-                    </div>
-                    
-                    <!-- Physical Attributes Section -->
                     <div class="section-header">
-                        <h5 class="mb-0">Physical Attributes</h5>
-                    </div>
-                    
+                        <h5 class="mb-0">Attributes</h5>
+                    </div>                    
                     <div class="row mb-3">
                         <div class="col-md-4">
-                            <label for="weight" class="form-label">Weight (kg)</label>
-                            <input type="number" class="form-control" id="weight" name="weight" value="3.2" step="0.01">
+                            <label for="weight-text" class="form-label">Weight (kg)</label>
+                            <input type="number" class="form-control" id="weight-text" name="weight-text" value="0.00" step="0.10">
                         </div>
                         <div class="col-md-4">
-                            <label for="length" class="form-label">Length (cm)</label>
-                            <input type="number" class="form-control" id="length" name="length" value="35" step="0.1">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="warehouseLocation" class="form-label">Warehouse Location</label>
-                            <input type="text" class="form-control" id="warehouseLocation" name="warehouseLocation" value="Aisle 5, Shelf B3">
-                        </div>
+                            <label for="volume-text" class="form-label">Volume (cm<sup>3</sup>)</label>
+                            <input type="number" class="form-control" id="volume-text" name="volume-text" value="0.00" step="0.10">
+                        </div>                        
                     </div>
                     
-                    <!-- Product Image Section -->
-                    <div class="section-header">
-                        <h5 class="mb-0">Product Image</h5>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <div class="image-upload-area">
-                            <div class="text-center text-muted">
-                                <p class="mb-1">Click to upload product image</p>
-                                <small>Supported formats: JPG, PNG, GIF</small>
-                            </div>
-                        </div>
-                        <input type="file" id="productImage" name="productImage" accept="image/*" style="display: none;">
-                    </div>
-                    
-                    <!-- Status Section -->
-                    <div class="section-header">
-                        <h5 class="mb-0">Status</h5>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label for="status" class="form-label">Product Status</label>
-                        <select class="form-select" id="status" name="status">
-                            <option value="active" selected>Active</option>
-                            <option value="discontinued">Discontinued</option>
-                            <option value="out-of-stock">Out of Stock</option>
-                        </select>
-                    </div>
-                    
-                    <!-- Action Buttons -->
-                    <div class="d-flex gap-2 justify-content-between">
-                        <button type="button" class="btn btn-danger">Delete Product</button>
+                    <div class="d-flex gap-2 justify-content-between">                        
                         <div class="d-flex gap-2">
                             <a href="detail.html" class="btn btn-secondary">Cancel</a>
-                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <button id="save-button" type="button" class="btn btn-primary">Save Changes</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="js/domain.js"></script>
+    <script type="text/javascript" src="js/infrastructure.js"></script>
+    <script type="text/javascript" src="js/application.js"></script>
+    <script type="text/javascript" src="js/client-edit.js"></script>
 </body>
 </html>
