@@ -92,6 +92,7 @@ class Inventory {
     category  = "";
     quantity = 0;
     price = "";
+    location = "";
     status = {
         text: "",
         badge: ""
@@ -112,30 +113,41 @@ class InventoryManager {
     getProducts(search){
         let result = [];
         for (const product of this.#_productRepository.all(search)) {
-            const stock = this.#_stockRepository.get(product.sku);
-
-            const vm = new Inventory();
-            vm.sku = product.sku;
-            vm.name = product.name;
-            vm.category = product.category;
-            vm.quantity = stock.quantity;
-            vm.price = product.price.toLocaleString("es-MX", {
-                style: "currency",
-                currency: "MXN"
-            });
-            vm.status.text = stock.outOfStock() ? "Out of Stock" :
-                             stock.lowStock() ? "Low Stock" :
-                             stock.inStock() ? "In Stock" : 
-                             "";
-            vm.status.badge = stock.outOfStock() ? "bg-danger" :
-                              stock.lowStock() ? "bg-warning text-dark" :
-                              stock.inStock() ? "bg-success" : 
-                              "";
-
+            const vm = this.getInventory(product.sku);            
             result.push(vm);
         }
 
         return result;
+    }
+
+    getInventory(sku) {
+        if (sku === null || sku.length <= 0) {
+            throw new Error("Invalid SKU");
+        }
+
+        const product = this.#_productRepository.get(sku);
+        const stock = this.#_stockRepository.get(sku);
+
+        const vm = new Inventory();
+        vm.sku = product.sku;
+        vm.name = product.name;
+        vm.category = product.category;
+        vm.quantity = stock.quantity;
+        vm.location = product.location;
+        vm.price = product.price.toLocaleString("es-MX", {
+            style: "currency",
+            currency: "MXN"
+        });
+        vm.status.text = stock.outOfStock() ? "Out of Stock" :
+                            stock.lowStock() ? "Low Stock" :
+                            stock.inStock() ? "In Stock" : 
+                            "";
+        vm.status.badge = stock.outOfStock() ? "bg-danger" :
+                            stock.lowStock() ? "bg-warning text-dark" :
+                            stock.inStock() ? "bg-success" : 
+                            "";
+
+        return vm;
     }
 
     registerProduct(sku, name) {

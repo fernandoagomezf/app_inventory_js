@@ -24,8 +24,17 @@ function populate(searchText) {
 function search() {
     const panel = document.getElementById("stock-panel");
     panel.style.display = "none";
+    resetPanel();
     const text = document.getElementById("search-text");
     populate(text.value);
+}
+
+function resetPanel() {
+    document.getElementById("product-name-label").textContent = "-";
+    document.getElementById("category-label").innerHTML = `<strong>Category: </strong> -`;
+    document.getElementById("price-label").innerHTML = `<strong>Price: </strong> -`;
+    document.getElementById("location-label").innerHTML = `<strong>Location: </strong> -`;
+    document.getElementById("stock-label").textContent = "-";
 }
 
 function selectProduct() {
@@ -38,9 +47,18 @@ function selectProduct() {
 
     if (sku.length <= 0) {
         panel.style.display = "none";
+        resetPanel();
         return;
     } 
+
+    const manager = new InventoryManager();
+    const inventory = manager.getInventory(sku);
     
+    document.getElementById("product-name-label").textContent = inventory.name;
+    document.getElementById("category-label").innerHTML = `<strong>Category: </strong> ${inventory.category}`;
+    document.getElementById("price-label").innerHTML = `<strong>Price: </strong> ${inventory.price}`;
+    document.getElementById("location-label").innerHTML = `<strong>Location: </strong> ${inventory.location}`;
+    document.getElementById("stock-label").textContent = inventory.quantity;
     panel.style.display = "block";
 }
 
