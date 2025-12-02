@@ -202,11 +202,11 @@ class InventoryManager {
         this.#_transactionRepository.delete(sku);
     }
 
-    #moveStock(sku, quantity, movement) {
+    moveStock(sku, quantity, type, reason, notes) {
         const product = this.#_productRepository.get(sku);
         const stock = this.#_stockRepository.get(sku);
         
-        if (movement > 0) {
+        if (type > 0) {
             stock.quantity += quantity;
         } else {
             stock.quantity -= quantity;
@@ -214,20 +214,22 @@ class InventoryManager {
         const transaction = new Transaction(
             sku, 
             stock.quantity, 
-            product.price, 
-            movement
+            parseFloat(product.price), 
+            type
         );
+        transaction.reason = reason;
+        transaction.notes = notes;
         
         this.#_stockRepository.save(stock);
         this.#_transactionRepository.save(transaction);
     }
 
-    increaseStock(sku, quantity) {
-        this.#moveStock(sku, quantity, Transaction.TYPE_INCREASE);
+    increaseStock(sku, quantity, reason, notes) {
+        this.moveStock(sku, quantity, Transaction.TYPE_INCREASE, reason, notes);
     }
 
-    decreaseStock(sku, quantity) {
-        this.#moveStock(sku, quantity, Transaction.TYPE_DECREASE);
+    decreaseStock(sku, quantity, reason, notes) {
+        this.moveStock(sku, quantity, Transaction.TYPE_DECREASE, reason, notes);
     }
 }
 

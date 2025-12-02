@@ -166,6 +166,7 @@ class TransactionRepository {
             total: transaction.total, 
             reason: transaction.reason, 
             notes: transaction.notes,
+            date: transaction.date,
         };
         return JSON.stringify(json);
     }

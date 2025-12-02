@@ -197,8 +197,8 @@ class Transaction {
         if (isNaN(quantity) || quantity === 0) {
             throw new Error("Quantity must be a non-zero number.");
         }
-        if (isNaN(price) || price >= 0) {
-            throw new Error("Price must not be be a negative number.");
+        if (isNaN(price) || price < 0.0) {
+            throw new Error("Price must not be a negative number.");
         }
         if (type !== Transaction.TYPE_INCREASE && type !== Transaction.TYPE_DECREASE) {
             throw new Error("Invalid transaction type.")

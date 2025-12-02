@@ -64,7 +64,6 @@
                 </div>
             </div>
             
-            <!-- Stock Adjustment -->
             <div id="stock-panel" class="col-md-7" style="display:none;">
                 <div class="card">
                     <div class="card-body">
@@ -72,7 +71,7 @@
                         
                         <form>
                             <div class="mb-4">
-                                <label for="adjustmentType" class="form-label">Adjustment Type</label>
+                                <label for="adjustement-type-list" class="form-label">Adjustment Type</label>
                                 <select class="form-select" id="adjustement-type-list">
                                     <option value="1" selected>Increase</option>
                                     <option value="-1">Decrease</option>
@@ -80,7 +79,7 @@
                             </div>
                             
                             <div class="mb-4">
-                                <label class="form-label">Quantity Adjustment</label>
+                                <label class="form-label">Quantity</label>
                                 <div class="quantity-controls">
                                     <button id="remove-button" type="button" class="btn btn-danger adjustment-btn">-</button>
                                     <input type="number" class="form-control quantity-input" id="quantity-text" value="0" min="0">
@@ -105,7 +104,7 @@
                             </div>
                             
                             <div class="mb-4">
-                                <label for="notes" class="form-label">Notes (Optional)</label>
+                                <label for="notes" class="form-label">Notes</label>
                                 <textarea class="form-control" id="notes-text" rows="3" placeholder="Add any additional notes about this adjustment..."></textarea>
                             </div>
                                                         

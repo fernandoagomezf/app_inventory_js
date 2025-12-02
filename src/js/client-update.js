@@ -38,7 +38,7 @@ function resetProductPanel() {
 
 function resetAdjustementPanel() {
     document.getElementById("adjustement-type-list").selectedIndex = 0;
-    document.getElementById("quantity-text").textContent = 0;
+    document.getElementById("quantity-text").value = 0;
 }
 
 function addQuantity() {
@@ -94,7 +94,20 @@ function cancel() {
 }
 
 function confirm() {
-
+    const vs = new ViewState();
+    const sku = vs.state.selectedSku;
+    const manager = new InventoryManager();
+    
+    const type = parseInt(document.getElementById("adjustement-type-list").value);
+    const quantity = parseFloat(document.getElementById("quantity-text").value);
+    const reason = document.getElementById("reason-list").value;
+    const notes = document.getElementById("notes-text").value;
+    
+    manager.moveStock(sku, quantity, type, reason, notes);
+    alert(`Product ${sku} updated successfully!`);
+    resetAdjustementPanel();
+    resetProductPanel();
+    document.getElementById("product-list").selectedIndex = 0;
 }
 
 function load() {
