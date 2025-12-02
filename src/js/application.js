@@ -14,7 +14,6 @@ class ViewState {
         if (data === null) {
             this.#_state = {
                 selectedSku: null,
-                search: null,
                 caller: null,
             };
         } else {

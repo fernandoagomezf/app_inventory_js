@@ -44,12 +44,20 @@ function selectProduct() {
     panel.style.display = "block";
 }
 
+function cancel() {
+    const vs = new ViewState();
+    vs.reset();
+    window.location.href = "index.html";
+}
+
 function load() {
     populate(null);
     document.getElementById("search-text")
             .addEventListener("input", search);
     document.getElementById("product-list")
             .addEventListener("change", selectProduct);
+    document.getElementById("cancel-button")
+            .addEventListener("click", cancel);
 }
 
 window.addEventListener("load", load);
