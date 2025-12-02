@@ -36,6 +36,7 @@ function load() {
             e.preventDefault();
             const vs = new ViewState();
             vs.state.selectedSku = vm.sku;
+            vs.state.caller = "index.html";
             vs.save();
             window.location.href = "edit.html"
         };

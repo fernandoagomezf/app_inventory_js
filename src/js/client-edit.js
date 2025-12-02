@@ -18,6 +18,8 @@ function load() {
 
     document.getElementById("save-button")
             .addEventListener("click", save);
+    document.getElementById("cancel-button")
+            .addEventListener("click", cancel);
 }
 
 function validate(sku, name, price) {
@@ -64,12 +66,17 @@ function save() {
         product.volume = document.getElementById("volume-text").value;
         inventory.updateProduct(product);
 
-        window.location.href = "detail.html";
+        window.location.href = vs.state.caller ?? "detail.html";
     } catch (error) {
         const errors = new ErrorView();
         errors.report(error.message);
         errors.update();
     } 
+}
+
+function cancel() {
+    const vs = new ViewState();
+    window.location.href = vs.state.caller ?? "detail.html";
 }
 
 window.addEventListener("load", load);

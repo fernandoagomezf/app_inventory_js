@@ -15,6 +15,7 @@ class ViewState {
             this.#_state = {
                 selectedSku: null,
                 search: null,
+                caller: null,
             };
         } else {
             this.#_state = JSON.parse(data);
