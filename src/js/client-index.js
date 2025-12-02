@@ -27,6 +27,14 @@ function load() {
         viewLink.href = 'detail.html';
         viewLink.className = 'btn btn-sm btn-secondary';
         viewLink.textContent = 'View';
+        viewLink.onclick = (e) => {
+            e.preventDefault();
+            const vs = new ViewState();
+            vs.state.selectedSku = vm.sku;
+            vs.state.caller = "index.html";
+            vs.save();
+            window.location.href = "detail.html"
+        };
         
         const editLink = document.createElement('a');
         editLink.href = 'edit.html';
