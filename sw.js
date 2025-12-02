@@ -1,19 +1,20 @@
 const CACHE_NAME = 'warehouse-inventory-v1';
 const urlsToCache = [
-  '/index.html',
-  '/detail.html',
-  '/edit.html',
-  '/update.html',
-  '/new.html',
-  '/styles/main.css',
-  '/js/domain.js',
-  '/js/infrastructure.js',
-  '/js/application.js',
-  '/js/client-index.js',
-  '/js/client-detail.js',
-  '/js/client-edit.js',
-  '/js/client-update.js',
-  '/js/client-new.js'
+  '/app_inventory_js/',
+  '/app_inventory_js/index.html',
+  '/app_inventory_js/detail.html',
+  '/app_inventory_js/edit.html',
+  '/app_inventory_js/update.html',
+  '/app_inventory_js/new.html',
+  '/app_inventory_js/styles/main.css',
+  '/app_inventory_js/js/domain.js',
+  '/app_inventory_js/js/infrastructure.js',
+  '/app_inventory_js/js/application.js',
+  '/app_inventory_js/js/client-index.js',
+  '/app_inventory_js/js/client-detail.js',
+  '/app_inventory_js/js/client-edit.js',
+  '/app_inventory_js/js/client-update.js',
+  '/app_inventory_js/js/client-new.js'
 ];
 
 // Install event - cache resources
