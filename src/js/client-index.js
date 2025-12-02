@@ -1,12 +1,12 @@
 
-function load() {
+function populateList(searchText) {
     const inventory = new InventoryManager();
 
     const table = document.querySelector("#product-table tbody");
     table.innerHTML = "";
 
     let count = 0;
-    const vms = inventory.getProducts(null);
+    const vms = inventory.getProducts(searchText);
     for (const idx in vms) {
         count++;
 
@@ -56,6 +56,17 @@ function load() {
     }
 
     document.getElementById("count-text").innerHTML = count.toString();
+}
+
+function load() {
+    populateList(null);    
+    document.getElementById("search-text")
+            .addEventListener("input", search);
+}
+
+function search() {
+    const text = document.getElementById("search-text");
+    populateList(text.value);
 }
 
 window.addEventListener("load", load);
